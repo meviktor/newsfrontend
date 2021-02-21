@@ -1,10 +1,10 @@
 import React from 'react';
-import { NewsList } from '../newslist/newslist.component';
+import NewsList from '../newslist/newslist.component';
 import SearchConfig from '../../searchConfig';
 
-function Home() {
+function Home({navigation}) {
     return (
-        <NewsList query={SearchConfig} />
+        <NewsList query={SearchConfig} navigation={navigation}/>
     );
 }
 

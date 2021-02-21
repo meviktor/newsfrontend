@@ -30,6 +30,7 @@ const NewsList = (props) => {
             setErrorOccured(true);
             setErrorText(generateErrorMessage(error));
         }
+        console.log(articles);
         setIsLoading(false);
     }
 
@@ -54,7 +55,7 @@ const NewsList = (props) => {
             {!errorOccured && 
                 <FlatList 
                     data={articles} 
-                    renderItem={({item}) => <NewsListItem news={item}/>}
+                    renderItem={({item}) => <NewsListItem news={item} navigation={props.navigation}/>}
                     onEndReached={() => _loadMoreNews()}
                     onEndReachedThreshold={0.1}
                     ListFooterComponent={isLoading && <Spinner/>}
@@ -72,7 +73,7 @@ const NewsListItem = (props) => {
                 {props.news.sourceName}
             </Text>
             <View style={NewsListItemStyle.newsContainer}>
-                <Text style={NewsListItemStyle.newsTitle}>
+                <Text style={NewsListItemStyle.newsTitle} onPress={() => props.navigation.navigate('Browser', {url: props.news.url})}>
                     {props.news.title}
                 </Text>
                 <View style={NewsListItemStyle.newsDetailsContainer}>
@@ -114,4 +115,4 @@ const EndOfResults = () => {
     );
 }
 
-export { NewsList };
+export default NewsList;
