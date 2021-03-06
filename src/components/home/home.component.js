@@ -1,12 +1,16 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import NewsList from '../newslist/newslist.component';
-import SearchConfig from '../../searchConfig';
-import { TouchableOpacity, View, Text } from 'react-native';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { HomeHeaderStyle, HomePageStyle } from './home.style';
-import  Drawer from 'react-native-drawer';
 import { useState } from 'react';
+import { TouchableOpacity, View, Text } from 'react-native';
+import  Drawer from 'react-native-drawer';
+
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+
+import NewsList from '../newslist/newslist.component';
+import SideMenu from '../sidemenu/sidemenu.component';
+import SearchConfig from '../../searchConfig';
+
+import { HomeHeaderStyle, HomePageStyle } from './home.style';
 
 const Home = ({navigation}) => {
     const [menuDrawer, setMenuDrawer] = useState(null);
@@ -37,16 +41,6 @@ const HomeHeader = ({menuDrawer}) => {
             </View>
             <Text style={HomeHeaderStyle.headerText}>
                 News - starting page
-            </Text>
-        </View>
-    );
-};
-
-const SideMenu = () => {
-    return (
-        <View style={{backgroundColor: "#dddddd", flex: 1, padding: 5}}>
-            <Text style={{fontSize: 18}}>
-                Side menu
             </Text>
         </View>
     );
