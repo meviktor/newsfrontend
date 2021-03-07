@@ -7,13 +7,13 @@ import { faCogs, faNewspaper, faSearch, faInfoCircle } from '@fortawesome/free-s
 import { SideMenuStyle } from './sidemenu.style';
 
 const sideMenuItems = [
-    { faIcon: faCogs, text: "Settings", pageToNavigateAfterPress: null },
+    { faIcon: faCogs, text: "Settings", pageToNavigateAfterPress: "SettingsMenu" },
     { faIcon: faNewspaper, text: "Search news", papageToNavigateAfterPress: null },
     { faIcon: faSearch, text: "Advanced search", papageToNavigateAfterPress: null },
     { faIcon: faInfoCircle, text: "About", papageToNavigateAfterPress: null }
 ];
 
-const SideMenu = () => {
+const SideMenu = ({navigation}) => {
     return (
         <View style={SideMenuStyle.menuContainer}>
             <SideMenuHeader/>
@@ -24,6 +24,7 @@ const SideMenu = () => {
                     <SideMenuItem 
                         faIcon={item.faIcon}
                         text={item.text}
+                        navigation={navigation}
                         pageToNavigateAfterPress={item.pageToNavigateAfterPress}
                     />
                 }/>
@@ -32,9 +33,13 @@ const SideMenu = () => {
     );
 };
 
-const SideMenuItem = ({faIcon, text, pageToNavigateAfterPress}) => {
+const SideMenuItem = ({faIcon, text, navigation, pageToNavigateAfterPress}) => {
     return (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => {
+            if(pageToNavigateAfterPress != null){
+                navigation.navigate(pageToNavigateAfterPress);
+            }
+        }}>
             <View style={SideMenuStyle.menuItemRoot}>
                 <View style={{flex: SideMenuStyle.menuItemIcon.flex, padding: SideMenuStyle.menuItemIcon.padding}}>
                     <FontAwesomeIcon icon={faIcon} size={SideMenuStyle.menuItemIcon.height} color={SideMenuStyle.menuItemIcon.color}/>

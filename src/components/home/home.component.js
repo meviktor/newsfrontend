@@ -16,7 +16,7 @@ const Home = ({navigation}) => {
     const [menuDrawer, setMenuDrawer] = useState(null);
 
     return (
-        <Drawer ref={(drawer) => setMenuDrawer(drawer)} open={false} type="overlay" tapToClose={true} openDrawerOffset={0.2} content={<SideMenu/>}>
+        <Drawer ref={(drawer) => setMenuDrawer(drawer)} open={false} type="overlay" tapToClose={true} openDrawerOffset={0.2} content={<SideMenu navigation={navigation}/>}>
             <View style={HomePageStyle.mainContainer}>
                 <View style={HomePageStyle.header}>
                     <HomeHeader menuDrawer={menuDrawer}/>
